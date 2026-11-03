@@ -1,6 +1,6 @@
 - name: create ec2 instances and r53 records
   hosts: local
-  connections: local
+  connection: local
   vars:
     instances: ["monogodb", "reddis", "mysql", "rabbitmq"]
     action: create
