@@ -6,6 +6,11 @@
     action: create
     domain_name: lkawsdevops.online
     ami_id: ami-0055977a6e828a4f4
+    sg_mapping:
+      mongodb: sg-0a30effe2e6ed1c45
+      redis: sg-0ae38ad2f21da2f3a
+      mysql: sg-01e4a1b171295d02e
+      rabbitmq: sg-010bdcd593c1ddaad
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:  
@@ -13,8 +18,8 @@
       image_id: "{{ ami_id }}"
       instance_type: t3.micro
       security_group: 
-      - roboshop-common
-      - "roboshop-{{ item }}"
+      - sg-07c25f0365cc7b781     # roboshop-common ID
+      - "{{ sg_mapping[item] }}"  # component-specific ID
       region: us-east-1
     loop: "{{ instances }}"
     when: action == "create"
