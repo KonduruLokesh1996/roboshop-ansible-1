@@ -1,4 +1,4 @@
-- name: create ec2 instance and r53 records
+- name: create ec2 instances and r53 records
   hosts: localhost
   connection: local
   vars:
@@ -16,5 +16,5 @@
       - roboshp-common
       - "roboshop-{{ item }}"
       region: us-east-1
-    loop: "{{ instance }}"
+    loop: "{{ instances }}"
     when: action == "create"
