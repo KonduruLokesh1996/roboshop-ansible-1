@@ -27,6 +27,24 @@
     
 
 
-  - name: print ec2 creation ec2_output
-    debug: 
-      msg:  "{{ instance }}"  
+  # - name: print ec2 creation ec2_output
+  #   debug: 
+  #     msg:  "{{ instance }}"  
+
+      ## now we got the instances output and that stored in ec2_output file here 
+      ## here we loop the first item, and that is mongodb
+      ## when looped we get item keyword  {{ item.instances }} in this to to refer first item we use [0].private_ip_address
+      ## {{ item.instances[0].private_ip_address }}
+
+
+  - name: create R53 record
+    amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "{{ item.item }}.{{ domain_name }}"
+      type: A
+      ttl: 1
+      overwrite: true
+      value: "{{ item.instances[0].private_ip_address }}"
+    loop: "{{ ec2_output.results }}"     
+    when: action == "create"
