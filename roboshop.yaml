@@ -24,9 +24,9 @@
     loop: "{{ instances }}"
     when: action == "create"
     register: instance
-    register: ec2_output
+    
 
 
   -name: print ec2 creation ec_output
    debug: 
-     msg:  "{{ ec2_output}}"  
+     msg:  "{{ instance }}"  
