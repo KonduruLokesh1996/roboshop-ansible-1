@@ -27,6 +27,6 @@
     
 
 
-  -name: print ec2 creation ec_output
+  -name: print ec2 creation ec2_output
    debug: 
      msg:  "{{ instance }}"  
