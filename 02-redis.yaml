@@ -10,4 +10,14 @@
       name: redis
       state: present
 
-    
+  - name: allow remote connection
+    replace:
+      path: /etc/redis/redis.conf
+      regex: '127.0.0.1'
+      replace: '0.0.0.0'
+
+  - name: disable protected module
+    lineinfile:
+      path: /etc/redis/redis.conf
+      regex: 's/^protected-mode yes'
+      replace: 'protected-mode no'          
