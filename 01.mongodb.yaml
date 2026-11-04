@@ -10,7 +10,7 @@
   
   - name: install mongodb server
     package:
-      name: mongodb-org
+      name: mongodb-org-7.0
       state: present
 
   - name: start and enabled mongodb
