@@ -15,9 +15,9 @@
 
   - name: start and enabled mongodb
     service:
-    name: mongod
-    state: started
-    eneabled: yes
+      name: mongod
+      state: started
+      eneabled: yes
 
   - name: allow remote connections
     replace:
