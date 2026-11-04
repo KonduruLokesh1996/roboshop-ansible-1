@@ -8,8 +8,9 @@
       dest: /etc/yum.repos.d/mongo.repo
 
   - name: Make cache clean and load metadata
-      dnf:
-        update_cache: yes
+    dnf:
+      update_cache: yes
+
   - name: install mongodb server
     package:
       name: mongodb-org
