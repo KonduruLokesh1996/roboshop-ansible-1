@@ -20,4 +20,10 @@
     lineinfile:
       path: /etc/redis/redis.conf
       regexp: 's/^protected-mode yes'
-      replace: 'protected-mode no'          
+      replace: 'protected-mode no'      
+
+  - name: enable and start redis
+    service:
+      name: redis
+      state: started
+      enabled: yes        
