@@ -7,9 +7,7 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
 
-  # - name: test the invetory variable
-  #     debug: 
-  #       msg: "{{ app_name }}"
+  
   - name: install mongodb server
     package:
       name: mongodb-org
