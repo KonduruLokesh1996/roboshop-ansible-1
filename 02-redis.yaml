@@ -16,7 +16,7 @@
       regexp: '127.0.0.1'
       replace: '0.0.0.0'
 
-  - name: disable protected module
+  - name: disable protected mode
     lineinfile:
       path: /etc/redis/redis.conf
       regexp: 's/^protected-mode yes'
@@ -25,5 +25,5 @@
   - name: enable and start redis
     service:
       name: redis
-      state: started
+      state: restarted
       enabled: yes        
