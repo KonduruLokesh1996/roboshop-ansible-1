@@ -7,10 +7,12 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
 
-  
+  - name: Make cache clean and load metadata
+      dnf:
+        update_cache: yes
   - name: install mongodb server
     package:
-      name: mongodb-org-7.0
+      name: mongodb-org
       state: present
 
   - name: start and enabled mongodb
