@@ -12,7 +12,7 @@
       state: present
 
   - name: enable and start mysql
-    services:
+    service:
       name: mysql
       state: started
       eneabled: yes
