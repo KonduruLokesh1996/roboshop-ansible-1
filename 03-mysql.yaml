@@ -17,15 +17,15 @@
       state: started
       eneabled: yes
 
-  # - name: setup mysql root password
-  #   ansible.mysql.mysql_user  
-  #     name: root
-  #     hosts: localhost
-  #     password: "{{ mysql_root_password}}"
-  #     check_implicit_admin: true
+  - name: setup mysql root password
+    ansible.mysql.mysql_user  
+      name: root
+      hosts: localhost
+      password: "{{ mysql_root_password}}"
+      check_implicit_admin: true
  
 
-  - name: setup mysql root password
-    command: mysql_secure_installation --set-root-pass "{{ mysql_root_password}}"
+  # - name: setup mysql root password
+  #   command: mysql_secure_installation --set-root-pass "{{ mysql_root_password}}"
 
 #insible-galaxy collection install ansible.yaml
